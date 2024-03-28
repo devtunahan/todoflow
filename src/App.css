@@ -1,0 +1,25 @@
+body {
+    font-family: 'Geist', sans-serif;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px
+}
+
+.todo-logo {
+    margin: 10px;
+    width: 40px;
+    height: auto;
+}
+
+.header-text {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.todo-item {
+    display:flex;
+}
