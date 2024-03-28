@@ -21,7 +21,7 @@ function App() {
       id: 3,
       title: 'Learn Vue',
       completed: true
-    }
+    },
   ]);
 
 
