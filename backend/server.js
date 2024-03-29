@@ -30,10 +30,9 @@ app.get('/todos', async (req, res) => {
 
 app.post('/todos', async (req, res) => {
     try {
-      const { title, description, completed } = req.body;
+      const { title, completed } = req.body;
       const newTodo = new Todo({
         title,
-        description,
         completed,
       });
       await newTodo.save();
