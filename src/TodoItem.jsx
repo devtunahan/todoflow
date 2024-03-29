@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function TodoItem({id, title, completed}) {
+function TodoItem({ id, title, completed }) {
+  const [isCompleted, setIsCompleted] = useState(completed);
+
+  const handleClick = () => {
+    setIsCompleted(!isCompleted);
+  };
+
   return (
-    completed ? <li className="todo-item" id={id} style={{textDecoration: 'line-through'}}>{title}</li> : <li className="todo-item" id={id}>{title}</li>
-  )
+    <>
+        <li
+      className="todo-item"
+      id={id}
+      onClick={handleClick}
+      style={{ textDecoration: isCompleted ? 'line-through' : 'none' }}
+    >
+      {title}
+    </li>
+    </>
+
+
+  );
 }
 
-export default TodoItem
+export default TodoItem;

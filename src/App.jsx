@@ -3,32 +3,19 @@ import Header from './Header.jsx';
 import './App.css';
 import { useState } from 'react';
 import TodoList from './TodoList.jsx';
+import TodoInput from './TodoInput.jsx';
 
 function App() {
 
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Learn React',
-      completed: false
-    },
-    {
-      id: 2,
-      title: 'Learn Angular',
-      completed: false
-    },
-    {
-      id: 3,
-      title: 'Learn Vue',
-      completed: true
-    },
-  ]);
+  const [input, setInput] = useState('');
+  const [todos, setTodos] = useState([]);
 
 
   return (
     <>
        <Header />
        <TodoList todos={todos} />
+       <TodoInput todos={todos} input={input} setTodos={setTodos} setInput={setInput} />
     </>
   )
 }

@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 0;
+    margin: 0 0 100px 0;
     padding: 0 20px 0 20px;
 }
 
@@ -33,4 +33,42 @@ body {
     padding: 15px;
     font-size: 18px;
     background-color: #f4f4f4;
+    cursor: pointer;
 }
+
+.todo-input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  .todo-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .add-todo-btn {
+    padding: 10px 20px;
+    margin-right: 40px;
+    background-color: #ff7f0e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-todo-btn:hover {
+    background-color: #e67e22;
+  }
+  
