@@ -71,7 +71,6 @@ body {
     padding: 10px;
     border: 1px solid #cccccc;
     font-size: 18px;
-    border-radius: 5px;
     margin-right: 10px;
   }
   
@@ -79,11 +78,9 @@ body {
     padding: 10px 20px;
     margin-right: 40px;
     font-size: 18px;
-
     background-color: #ff7f0e;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
   }
   

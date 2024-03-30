@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function TodoItem({ id, title, completed }) {
+function TodoItem({ id, title, completed,todos, setTodos }) {
   const [isCompleted, setIsCompleted] = useState(completed);
 
   const handleClick = () => {
+    console.log("ID is: ", id);
     axios.put(`http://localhost:3000/todos/${id}`, { completed: !isCompleted })
       .then(res => {
         setIsCompleted(res.data.completed);
-        console.log(res);
-        console.log(res.data);
       })
       .catch(error => {
         console.error(error);
       });
 
+  };
+
+  const handleDelete = () => {
+    setTodos(todos.filter(todo => todo._id !== id));
+    axios.delete(`http://localhost:3000/todos/${id}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
   return (
     <>
@@ -27,7 +37,7 @@ function TodoItem({ id, title, completed }) {
     >
       {title}
     </li>
-    <button className="delete-todo-btn">X</button>
+    <button className="delete-todo-btn" onClick={handleDelete}>X</button>
     </div>
     </>
 

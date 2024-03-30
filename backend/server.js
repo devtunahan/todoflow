@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Todo = require('./models/Todo'); // Import the Todo model
+const { default: axios } = require('axios');
 
 const app = express();
 
@@ -46,6 +47,16 @@ app.put('/todos/:id', async (req, res) => {
   }
 });
 
+app.delete('/todos/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedTodo = await Todo.findByIdAndDelete(id); // Find the todo by id and delete it
+    console.log(deletedTodo);
+    res.json(deletedTodo);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

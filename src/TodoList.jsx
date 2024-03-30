@@ -1,10 +1,11 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-function TodoList({todos}) {
+function TodoList({todos, setTodos}) {
+
     return (
         <ul className='todo-item-list'>
-            {todos.map((todo) => (<TodoItem key={todo._id} id={todo._id} title={todo.title} completed={todo.completed} />))}
+            {todos.map((todo, key) => (<TodoItem key={key++} id={todo._id} title={todo.title} completed={todo.completed} todos={todos} setTodos={setTodos}/>))}
         </ul>
     )
 }
