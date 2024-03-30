@@ -1,13 +1,22 @@
 import React from 'react'
+import axios from 'axios'
 
 function TodoInput({todos, input, setInput, setTodos}) {
 
     const addTodo = () => {
-        if (!input) alert("Todo Input is empty!"); // Ensure the input is not empty
-        if (input.trim()) { // Ensure the input is not just whitespace
-            setTodos([...todos, {id: todos.length + 1, title: input, completed: false}]);
-            setInput(''); // Reset the input field to an empty string
-        }
+      if (!input) alert("Todo Input is empty!"); // Ensure the input is not empty
+      if (input.trim()) { // Ensure the input is not just whitespace
+        axios.post(`http://localhost:3000/todos`, {title: input, completed: false})
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+          setTodos([...todos, {title: input, completed: false}]);
+          setInput(''); // Reset the input field to an empty string
+        })
+        .catch(error => {
+          console.error(error);
+        }); // Send a POST request to the server
+      }
     }
 
   return (

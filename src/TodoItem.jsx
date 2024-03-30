@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function TodoItem({ id, title, completed }) {
   const [isCompleted, setIsCompleted] = useState(completed);
 
   const handleClick = () => {
-    setIsCompleted(!isCompleted);
-  };
+    axios.put(`http://localhost:3000/todos/${id}`, { completed: !isCompleted })
+      .then(res => {
+        setIsCompleted(res.data.completed);
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
+  };
   return (
     <>
-        <li
+    <div className="todo-row">
+    <li
       className="todo-item"
       id={id}
       onClick={handleClick}
@@ -17,6 +27,8 @@ function TodoItem({ id, title, completed }) {
     >
       {title}
     </li>
+    <button className="delete-todo-btn">X</button>
+    </div>
     </>
 
 
