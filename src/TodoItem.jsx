@@ -26,6 +26,24 @@ function TodoItem({ id, title, completed,todos, setTodos }) {
         console.error(error);
       });
   };
+
+  const handleEdit = () => {
+    const newTitle = prompt('Enter new title');
+    if (newTitle) {
+      axios.put(`http://localhost:3000/todos/${id}`, { title: newTitle })
+        .then(res => {
+          setTodos(todos.map(todo => {
+            if (todo._id === id) {
+              return { ...todo, title: res.data.title };
+            }
+            return todo;
+          }));
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  };
   return (
     <>
     <div className="todo-row">
@@ -37,6 +55,7 @@ function TodoItem({ id, title, completed,todos, setTodos }) {
     >
       {title}
     </li>
+    <button className="edit-todo-btn" onClick={handleEdit}>Edit</button>
     <button className="delete-todo-btn" onClick={handleDelete}>X</button>
     </div>
     </>

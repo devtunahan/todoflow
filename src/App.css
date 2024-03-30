@@ -43,13 +43,16 @@ body {
   cursor: pointer;
 }
 
-.delete-todo-btn {
+.delete-todo-btn, .edit-todo-btn  {
   padding: 10px 20px;
+  margin-left: 5px;
+  font-size: 18px;
   background-color: #ff7f0e;
   color: #ffffff;
   border: none;
   cursor: pointer;
 }
+
 
 
 .todo-input-container {
