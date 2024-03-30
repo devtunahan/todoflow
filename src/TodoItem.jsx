@@ -59,8 +59,6 @@ function TodoItem({ id, title, completed,todos, setTodos }) {
     <button className="delete-todo-btn" onClick={handleDelete}>X</button>
     </div>
     </>
-
-
   );
 }
 
