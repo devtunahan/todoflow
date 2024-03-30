@@ -2,14 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Todo = require('./models/Todo'); // Import the Todo model
+require('dotenv').config();
+
+
 const { default: axios } = require('axios');
+
+const { MONGODB_USERNAME, MONGODB_PASSWORD, MONGODB_HOST, MONGODB_PORT, DATABASE_NAME } = process.env;
+const connectionString = `mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_PORT}/${DATABASE_NAME}`;
 
 const app = express();
 
 app.use(express.json());
 app.use(cors()); // Enable CORS middleware
 
-mongoose.connect('mongodb://localhost:27017/todoflow')
+mongoose.connect(connectionString)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
